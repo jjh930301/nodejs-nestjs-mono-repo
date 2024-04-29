@@ -1,0 +1,129 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: api
+      args:
+        service: api
+    restart: always
+    ports:
+      - "9090"
+      - "9229:9229"
+    env_file:
+      - config/env/.env.production
+    environment:
+      - NODE_ENV=${ENV_FILE:-local}
+      - NO_COLOR=true
+    entrypoint: ["npm", "run", "debug", "-w", "api"]
+    develop:
+      watch:
+        - action: sync
+          path: api
+          target: /app/api
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ev-common
+          target: /app/ev-common
+          ignore:
+            - node_modules/
+        - action: sync+restart
+          path: config
+          target: /app/config
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: ev-common/package.json
+  socket:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: socket
+      args:
+        service: socket
+      tags:
+        - workspace-socket
+    restart: always
+    ports:
+      - "9000"
+      - "9230:9229"
+    env_file:
+      - config/env/.env.production
+    entrypoint: ["npm", "run", "debug", "-w", "socket"]
+    develop:
+      watch:
+        - action: sync
+          path: socket
+          target: /app/socket
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ev-common
+          target: /app/ev-common
+          ignore:
+            - node_modules/
+        - action: sync+restart
+          path: config
+          target: /app/config
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: ev-common/package.json
+  process:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: process
+      args:
+        service: process
+      tags:
+        - workspace-process
+    restart: always
+    ports:
+      - "9010"
+      - "9231:9229"
+    env_file:
+      - config/env/.env.production
+    environment:
+      - NODE_ENV=${ENV_FILE:-local}
+    entrypoint: ["npm", "run", "debug", "-w", "process"]
+    develop:
+      watch:
+        - action: sync
+          path: process
+          target: /app/process
+          ignore:
+            - node_modules/
+        - action: sync
+          path: ev-common
+          target: /app/ev-common
+          ignore:
+            - node_modules/
+        - action: sync+restart
+          path: config
+          target: /app/config
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: ev-common/package.json
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+      - "9090:9090"
+      - "9000:9000"
+      - "9010:9010"
+    volumes:
+      - nginx:/var/log/nginx
+    restart: always
+    depends_on:
+      - api
+      - socket
+      - process
+volumes:
+  nginx: {}
