@@ -10,7 +10,7 @@ import { entities } from "@ev-common/entities";
 import { Manager } from "./repositories/Manager";
 
 const app = express();
-const PORT = process.env.OCPP_PROCESS_16_PORT;
+const PORT = process.env.PROCESS_PORT;
 const QueueSet = new Set();
 
 app.get("/health/check", async (_req, res) => {

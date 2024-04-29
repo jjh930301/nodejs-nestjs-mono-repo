@@ -74,7 +74,7 @@ function startWebSocketProcessServer() {
 
 startWebSocketProcessServer();
 
-const PORT = process.env.DEPLOYMENT ? process.env.OCPP_16_PORT : 9001;
+const PORT = process.env.SOCKET_PORT;
 server.listen(PORT, () => console.info(`Server listening on ${PORT}`));
 
 async function checkDbConnected() {

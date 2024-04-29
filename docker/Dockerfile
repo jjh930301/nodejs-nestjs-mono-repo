@@ -33,7 +33,6 @@ COPY --chown=app:app ./ev-common ./ev-common
 COPY --chown=app:app ./config ./config
 COPY --chown=app:app ./package*.json .
 EXPOSE 9000
-EXPOSE 9001
 RUN mkdir -p logs
 
 
