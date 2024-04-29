@@ -1,8 +1,8 @@
 ## run packages
 
-- `docker-compose -f compose.datastore.yml up --build`
-
 - `git clone git@github.com:jjh930301/nodejs-nestjs-mono-repo.git`
+
+- `docker-compose -f compose.datastore.yml up --build`
 
 - root , ev-common , api , process , socket dir에서 `npm i`
 
@@ -10,7 +10,7 @@
 
 ## 참조
 
-- 크로커스에서 구조적으로 문제가 있던 message broker가 수정된 프로젝트
+- 구조적으로 문제가 있던 message broker가 수정된 프로젝트
 
 - socket , process는 sequelize를 사용하고 있었고 api(nestjs)는 typeorm을 사용하고 있어서 js -> ts 마이그레이션
 
@@ -22,4 +22,4 @@
 
 - socket server replica가 생성될 때 process서버는 생성된 queue를 구독 특정 채널에 publish
 
-- app.controller.ts api를 개발 예시
+- app.controller.ts api 개발 예시
