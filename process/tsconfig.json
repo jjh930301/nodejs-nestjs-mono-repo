@@ -1,0 +1,9 @@
+{
+  "extends": "../config/shared/tsconfig.base.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "./dist",
+    "baseUrl": "./"
+  },
+  "include": ["src/**/*"]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../config/shared/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDirs": ["./src", "../config", "../ev-common"],
+    "baseUrl": "./"
+  },
+  "include": ["./src/**/*", "../config/**/*"],
+  "exclude": ["node_modules", "./src/**/*.test.ts", "./src/**/*.spec.ts"]
+}

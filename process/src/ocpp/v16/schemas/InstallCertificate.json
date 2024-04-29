@@ -1,0 +1,28 @@
+{
+  "$id": "urn:OCPP:Cp:1.6:2020:3:InstallCertificate.req",
+  "definitions": {
+    "CertificateUseEnumType": {
+      "type": "string",
+      "additionalProperties": false,
+      "enum": [
+        "CentralSystemRootCertificate",
+        "ManufacturerRootCertificate"
+      ]
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "certificateType": {
+      "$ref": "#/definitions/CertificateUseEnumType"
+    },
+    "certificate": {
+      "type": "string",
+      "maxLength": 5500
+    }
+  },
+  "required": [
+    "certificateType",
+    "certificate"
+  ]
+}

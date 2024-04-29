@@ -1,0 +1,16 @@
+{
+  "extends": "./config/shared/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDirs": [".", "./ev-common"],
+    "noErrorTruncation": true
+  },
+  "include": [
+    "./ev-common/src/**/*",
+    "./socket/**/*",
+    "./process/src/**/*",
+    "./api/src/**/*",
+    "./cron/src/**/*",
+    "eslint.config.mjs"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../config/shared/tsconfig.base.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "@ev-common/*": ["../ev-common/src/*"]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "extends": ["eslint:recommended", "google", "prettier"],
+  "overrides": [
+    {
+      "files": ["./models/*.js"],
+      "rules": {
+        "max-len": "off",
+        "camelcase": "off",
+        "new-cap": "off",
+        "no-unused-vars": "off",
+        "quotes": "off",
+        "comma-dangle": "off",
+        "object-curly-spacing": "off"
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "rules": {
+      "max-len": "off",
+      "camelcase": "off",
+      "new-cap": "off",
+      "no-unused-vars": "off",
+      "quotes": "off",
+      "comma-dangle": "off",
+      "object-curly-spacing": "off"
+    }
+  },
+  "rules": {
+    "no-process-env": "error",
+    "max-len": ["error", {"code": 120}],
+    "indent": ["error", 4],
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": false,
+          "MethodDefinition": false,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
+        }
+      }
+    ]
+  }
+}

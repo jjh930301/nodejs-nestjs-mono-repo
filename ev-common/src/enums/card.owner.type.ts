@@ -1,0 +1,6 @@
+export enum CardOwnerType {
+  PRIVATE,
+  CORPORATION,
+  PRIVATE_CORPORATION,
+  OVERSEAS,
+}

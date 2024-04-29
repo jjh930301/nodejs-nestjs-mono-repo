@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  rabbitmq:
+    build:
+      context: ./docker
+      dockerfile: rabbitmq/Dockerfile
+    container_name: rabbitmq
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "RabbitMQ-My-Cookies"
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "password"
+  mysql:
+    build:
+      context: ./docker
+      dockerfile: mysql/Dockerfile
+    restart: always
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+    cap_add:
+      - SYS_NICE
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+    command: --default-authentication-plugin=mysql_native_password
+volumes:
+  rabbitmq: {}
+  mysql: {}

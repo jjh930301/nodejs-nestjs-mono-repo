@@ -1,0 +1,14 @@
+{
+  "extends": "../config/shared/tsconfig.prod.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDirs": ["./src", "../config", "../ev-common"],
+    "baseUrl": "./",
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  },
+  "include": ["./src/**/*", "../config/**/*"],
+  "exclude": ["node_modules", "./src/**/*.test.ts", "./src/**/*.spec.ts"]
+}

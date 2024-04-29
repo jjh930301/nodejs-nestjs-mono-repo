@@ -1,0 +1,7 @@
+{
+  "extends": "../config/shared/tsconfig.prod.json",
+  "compilerOptions": {
+    "outDir": "./lib",
+    "baseUrl": "./"
+  }
+}
